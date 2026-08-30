@@ -473,6 +473,10 @@ function killShip() {
 
 // ── Update ────────────────────────────────────────────────────────────────────
 function update(dt) {
+  if (slowMotionTimer > 0) slowMotionTimer -= dt;
+  powerUps.forEach((p) => p.update(dt));
+  powerUps = powerUps.filter((p) => !p.dead);
+
   if (state === "gameover") {
     if (pressed("Space")) initGame();
     particles.forEach((p) => p.update(dt));
@@ -498,18 +502,15 @@ function update(dt) {
     bullets.push(...ship.tryShoot());
   }
 
-  if (slowMotionTimer > 0) slowMotionTimer -= dt;
   const asteroidDt = slowMotionTimer > 0 ? dt * 0.5 : dt;
 
   ship.update(dt);
   bullets.forEach((b) => b.update(dt));
   asteroids.forEach((a) => a.update(asteroidDt));
   particles.forEach((p) => p.update(dt));
-  powerUps.forEach((p) => p.update(dt));
 
   bullets = bullets.filter((b) => !b.dead);
   particles = particles.filter((p) => !p.dead);
-  powerUps = powerUps.filter((p) => !p.dead);
 
   // Bala vs asteroide
   const newAsteroids = [];
