@@ -34,4 +34,4 @@ Todo el estado y la lógica están en `game.js`, organizado en secciones delimit
 - **Progresión de nivel**: al vaciarse `asteroids`, `nextLevel()` incrementa `level` y spawnea `3 + level` asteroides grandes.
 - **Invencibilidad tras respawn**: `ship.invincible` (segundos restantes) bloquea colisiones nave-asteroide y produce el parpadeo visual en `Ship.draw()`.
 
-Nota: el `README.md` menciona power-ups y tipos especiales de asteroide (p. ej. "estrella fugaz") como parte de la descripción del juego, pero esas features no existen en `game.js` actualmente.
+Nota: el `README.md` menciona power-ups y tipos especiales de asteroide (p. ej. "estrella fugaz"). En `game.js` ya hay power-ups implementados; si el README describe otros tipos/especiales adicionales, habría que actualizarlos o implementarlos para que coincidan con el estado real del juego.
